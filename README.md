@@ -5,11 +5,12 @@ MySQL을 활용한 SQL 기초 문법부터 연습 문제 해결까지!
 
 ---
 
-## 📁 폴더 구조
-SQL_rep <br>
-├── 📄 *.sql # 실습 SQL 파일 모음 <br>
-├── 📂 data/ # 데이터셋(csv) 폴더 <br>
-     └── *.csv # 실습에 사용된 CSV 파일 <br>
+## 📁 폴더 구조  
+SQL_rep/  
+├── 📄 *.sql # 실습 SQL 파일 모음  
+├── 📂 data/ # 데이터셋(csv) 폴더  
+│   └── *.csv # 실습에 사용된 CSV 파일  
+
 
 ---
 
@@ -26,7 +27,7 @@ SQL_rep <br>
   - `INNER JOIN`
   - `LEFT JOIN`, `RIGHT JOIN`
   - `SELF JOIN`
-  - `FULL OUTER JOIN` 대체 방식(`UNION` 활용)
+  - `FULL OUTER JOIN` 대체 방식(`UNION` 활용)  
 /*
 - **고급 쿼리 학습**
   - 서브쿼리, EXISTS, IN, NOT IN
