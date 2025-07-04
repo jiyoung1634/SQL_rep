@@ -9,7 +9,7 @@ MySQL을 활용한 SQL 기초 문법부터 연습 문제 해결까지!
 SQL_rep/ <br>
 ├── 📄 *.sql # 실습 SQL 파일 모음 <br>
 ├── 📂 data/ # 데이터셋(csv) 폴더 <br>
-│ └── *.csv # 실습에 사용된 CSV 파일 <br>
+  └── *.csv # 실습에 사용된 CSV 파일 <br>
 
 ---
 
