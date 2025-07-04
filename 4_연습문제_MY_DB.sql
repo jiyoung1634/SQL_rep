@@ -1,0 +1,104 @@
+SELECT *
+FROM EMP;
+-- 사원들의 소속 부서 종류만 조회
+SELECT DNAME
+FROM DEPT;
+-- 급여가 2000이상 3000이하를 받는 사원 정보(부서번호(DEPTNO), 이름(ENAME), 직무(JOB), 급여(SAL))만 조회 , 결과집합 생성
+SELECT DEPTNO, ENAME, JOB, SAL
+FROM EMP
+WHERE SAL BETWEEN 2000 AND 3000;
+
+-- 사원번호가 7902, 7788, 7566인  사원 정보(사원번호(EMPNO), 부서번호(DEPTNO), 이름(ENAME), 직무(JOB) )만 조회
+SELECT EMPNO, DEPTNO, ENAME, JOB
+FROM EMP
+WHERE EMPNO=7902 OR EMPNO=7788 OR EMPNO=7566;
+
+-- 사원 이름이 ‘A’로 시작하는  사원이름(ENAME), 급여(SAL), 업무(JOB)
+SELECT ENAME, SAL, JOB
+FROM EMP
+WHERE ENAME LIKE 'A%';
+
+-- 사원 이름의 두번째 문자가 ‘A’인  모든 사원이름(ENAME), 급여(SAL), 업무(JOB)
+SELECT ENAME, SAL, JOB
+FROM EMP
+WHERE ENAME LIKE '_A%';
+
+-- 사원 이름이 마지막 문자가 ‘N’인  사원이름(ENAME), 급여(SAL), 업무(JOB) 조회
+SELECT ENAME, SAL, JOB
+FROM EMP
+WHERE ENAME LIKE '%N';
+
+-- 커미션을 받지 않는 사원이름(ENAME), 급여(SAL), 업무(JOB), 커미션(COMM)을  조회
+SELECT ENAME, SAL, JOB, COMM
+FROM EMP
+WHERE COMM IS NULL;
+
+-- 커미션이 NULL인 경우 0으로 SAL+COMM = TOTAL_SALARY 계산
+SELECT *
+, IFNULL(COMM, 0) AS COMM
+, SAL + IFNULL(COMM, 0) AS TOTAL_SALATY
+FROM EMP;
+
+-- 커미션을 받는 사원들의 커미션 평균
+SELECT AVG(COMM) AS AVG_COMM
+FROM EMP
+WHERE COMM IS NOT NULL;
+
+-- DEPTNO, JOB 별 급여합계, 급여평균, 총합계
+SELECT DEPTNO, JOB, SUM(SAL), AVG(SAL), SUM(SAL)+AVG(SAL)
+FROM EMP
+GROUP BY DEPTNO, JOB;
+
+
+-- 외에 연습문제 출제해서 풀기 (3문제)
+-- 부서(DEPTNO)별 평균 급여와 총 인원 수를 출력
+SELECT DEPTNO, AVG(SAL), COUNT(*) AS 총인원수
+FROM EMP
+GROUP BY DEPTNO;
+
+-- 입사 연도가 1982년인 사원의 사원번호(EMPNO), 이름(ENAME), 급여(SAL), 입사일(HIREDATE) 출력
+SELECT EMPNO, ENAME, SAL, HIREDATE
+FROM EMP
+WHERE YEAR(HIREDATE)='1982';
+
+
+-- 업무(JOB)별 가장 높은 급여(SAL)를 받는 사원 수
+SELECT JOB, MAX(SAL), COUNT(*) AS 총인원수
+FROM EMP
+GROUP BY JOB;
+
+
+SELECT * FROM DEPT;
+SELECT * FROM EMP;
+SELECT * FROM SALGRADE;
+-- MY_DB 조인 연습
+-- EMP테이블에서 사원들의 이름(ENAME), 급여(SAL)와 급여 등급을 출력하는 SQL문 작성
+SELECT ENAME, SAL, SALGRADE.GRADE
+FROM EMP
+LEFT JOIN SALGRADE
+ON SAL BETWEEN LOSAL AND HISAL;
+
+-- 사원번호(EMPNO), 사원이름(ENAME), 관리자번호(MGR), 관리자이름(MGR번호를 EMPNO번호로 가진 사람)을 조회
+SELECT EMP.EMPNO, EMP.ENAME, EMP.MGR, 관리자.ENAME AS 관리자이름
+FROM EMP
+INNER JOIN EMP AS 관리자
+ON EMP.MGR = 관리자.EMPNO;
+
+-- 모든 사원에 대해서 사원번호(EMPNO)와 이름(ENAME), 부서번호(DEPTNO), 부서이름을 조회
+SELECT EMPNO, ENAME, EMP.DEPTNO, DEPT.DNAME AS 부서이름
+FROM EMP
+LEFT JOIN DEPT
+ON EMP.DEPTNO = DEPT.DEPTNO;
+
+-- 모든 부서에 대해서 부서별(DEPTNO)로 소속 사원들의 정보를 출력
+SELECT *
+FROM EMP
+RIGHT JOIN DEPT
+ON EMP.DEPTNO = DEPT.DEPTNO;
+
+-- 모든 사원과 모든 부서 정보를 조인 결과로 생성 (부서에 소속된 사원이 없어도 부서명와 소속되지 않은 사원 출력)
+SELECT *
+FROM EMP
+CROSS JOIN DEPT;
+
+
