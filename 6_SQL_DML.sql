@@ -144,3 +144,17 @@ WHERE 주문.고객번호 IS NULL;
 SELECT *
 FROM 고객
 WHERE 고객번호 IN ('BQQZA', 'RISPA', 'SSAFI', 'TTRAN');
+
+
+USE WNTRADE;
+
+SELECT *
+FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS
+WHERE CONSTRAINT_SCHEMA = 'WNTRADE'
+AND TABLE_NAME = '제품';
+-- 제품 테이블의 재고 컬럼 '0보다 크거나 같아야 한다'
+ALTER TABLE 제품 ADD CONSTRAINT CHECK(재고 >= 0);
+-- 제품테이블 재고금액 컬럼 추가 '단가*재고' 자동 계산, 저장
+ALTER TABLE 제품 ADD 재고금액 INT AS (단가*재고) STORED;
+-- 제품 레코드 삭제시 주문 세부 테이블의 관련 레코드도 함께 삭제되도록 주문 세부 테이블에 설정
+ALTER TABLE 주문세부 ADD CONSTRAINT FOREIGN KEY (제품번호) REFERENCES 제품(제품번호) ON DELETE CASCADE;
