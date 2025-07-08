@@ -1,0 +1,5 @@
+USE MY_DB;
+SELECT ENAME, SAL, JOB
+FROM EMP;
+
+SELECT * FROM products_1;

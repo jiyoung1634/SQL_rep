@@ -95,3 +95,33 @@ CREATE TABLE 날씨
 , INDEX 기온인덱스(기온)
 , INDEX 도시인덱스(도시)
 );
+
+
+use 분석실습;
+
+SELECT *
+FROM sales
+WHERE Quantity BETWEEN 8 AND 9; -- 0.015sec, 0.016
+
+-- 수량 인덱스
+CREATE INDEX idx_quantity ON sales(Quantity);
+
+ALTER TABLE sales DROP INDEX idx_quantity;
+
+-- 또는 단가 인덱스
+CREATE INDEX idx_unitprice ON sales(UnitPrice);
+
+EXPLAIN analyze
+SELECT *
+FROM sales
+WHERE Quantity BETWEEN 8 AND 9;
+
+EXPLAIN
+SELECT *
+FROM sales FORCE INDEX (idx_quantity)
+WHERE Quantity BETWEEN 5 AND 10;
+
+EXPLAIN
+SELECT /+ INDEX(sales idx_quantity)/ Quantity
+FROM sales
+WHERE Quantity BETWEEN 5 AND 10;
