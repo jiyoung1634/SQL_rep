@@ -6,10 +6,13 @@ MySQL을 활용한 SQL 기초 문법부터 연습 문제 해결까지!
 ---
 
 ## 📁 폴더 구조  
-SQL_rep/  
-├── 📄 *.sql # 실습 SQL 파일 모음  
-├── 📂 data/ # 데이터셋(csv) 폴더  
-│   └── *.csv # 실습에 사용된 CSV 파일  
+SQL_rep/
+├── 📄 *.sql              # SQL 실습 SQL 파일들
+├── 📂 data/              # CSV 데이터셋 폴더
+│   └── *.csv             # 실습에 사용된 CSV 파일
+├── 📂 mig/               # 텍스트 데이터셋 및 추가 자료
+│   └── *.txt             # 마이그레이션 관련 데이터 등
+└── 📄 README.md          # 프로젝트 설명 파일 
 
 
 ---
@@ -27,13 +30,14 @@ SQL_rep/
   - `INNER JOIN`
   - `LEFT JOIN`, `RIGHT JOIN`
   - `SELF JOIN`
-  - `FULL OUTER JOIN` 대체 방식(`UNION` 활용)  
-/*
-- **고급 쿼리 학습**
-  - 서브쿼리, EXISTS, IN, NOT IN
-  - VIEW 생성 및 활용
-  - 윈도우 함수(ROW_NUMBER(), RANK(), DENSE_RANK(), etc.)
-*/
+  - `FULL OUTER JOIN` 대체 방식(`UNION` 활용)
+- **서브 쿼리 실습**:
+  - `WHERE절`, `FROM절(인라인 뷰)`, `SELECT절(스칼라 서브쿼리)`
+- **DML (데이터 조작어)**:
+  - `INSERT`, `UPDATE`, `DELETE`
+- **DDL (데이터 정의어)**:
+  - `CREATE`, `ALTER`, `DROP`
+
 ---
 
 ## 🧠 실습 예제 주제
@@ -44,6 +48,7 @@ SQL_rep/
 - 제품별 매출 금액, 주문수량 합계
 - 입사일 기준 선배-후배 관계 분석
 - 월별 발송 지연건 분석
+- 서브쿼리를 활용한 고객별 총주문건수
 
 ---
 
