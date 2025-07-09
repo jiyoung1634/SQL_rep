@@ -6,8 +6,8 @@ MySQL을 활용한 SQL 기초 문법부터 연습 문제 해결까지!
 ---
 
 ## 📁 폴더 구조  
-SQL_rep/
-├── 📄 *.sql              # SQL 실습 SQL 파일들
+SQL_rep/ <br>
+├── 📄 *.sql              # SQL 실습 SQL 파일들 <br>
 ├── 📂 data/              # CSV 데이터셋 폴더
 │   └── *.csv             # 실습에 사용된 CSV 파일
 ├── 📂 mig/               # 텍스트 데이터셋 및 추가 자료
